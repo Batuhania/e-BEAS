@@ -702,5 +702,132 @@ export const kritikBilgiler = [
             { anahtar: "Min 3 Fon Kurma", deger: "Emeklilik şirketi kuruluşunda en az 3 farklı fon zorunlu", renk: "blue" },
             { anahtar: "Dengeleme Karşılığı", deger: "Gelecek tazminat dalgalanmalarını dengelemek için ayrılan fon", renk: "blue" },
         ]
+    },
+    // ============== YENİ BÖLÜMLER ==============
+    {
+        baslik: "OKS KURALLARI",
+        kartlar: [
+            { anahtar: "OKS Kapsamı", deger: "Sadece maaşlı çalışanlar (işçi/memur). Bağımsız esnaf/serbest meslek KAPSAM DIŞI", renk: "red" },
+            { anahtar: "Kesinti Oranı", deger: "Prime esas kazancın %3'ü (SGK matrahı). Asgari ücretten DEĞİL!", renk: "red" },
+            { anahtar: "İlk Durak", deger: "Başlangıç dönemi içinde kesilen tüm paralar Başlangıç Fonu'nda yatırılır", renk: "blue" },
+            { anahtar: "Şirket Seçimi", deger: "İşveren seçer. Ancak ara verme ve fon değiştirme hakkı ÇALIŞANINDIR", renk: "yellow" },
+            { anahtar: "İşveren Ödeme", deger: "İşveren kendi cebinden katkı payı ödemek ZORUNDA DEĞİLDİR", renk: "red" },
+            { anahtar: "OKS Cayma", deger: "Bildirim tarihini takip eden başlangıç dönemi (2 ay) içinde", renk: "blue" },
+            { anahtar: "Muhtemel Birikim", deger: "Sözleşmeye 'muhtemel birikim tutarları' YAZILAMAZ", renk: "red" },
+        ]
+    },
+    {
+        baslik: "OPERASYONEL SÜRELER (DETAYLI)",
+        kartlar: [
+            { anahtar: "Yatırım Talimatı", deger: "Katkı payı intikalinden sonra en geç 2. İŞ GÜNÜ", renk: "blue" },
+            { anahtar: "Ayrılma Bilgi Formu", deger: "Talepten sonra 5 İŞ GÜNÜ içinde gönderilir", renk: "blue" },
+            { anahtar: "Teklif Reddi İade", deger: "Şirket teklifi reddederse peşinat 5 İŞ GÜNÜ içinde iade", renk: "blue" },
+            { anahtar: "Cayma Para İadesi", deger: "Cayma bildiriminden itibaren 10 İŞ GÜNÜ", renk: "blue" },
+            { anahtar: "Plan Değişikliği", deger: "Talep şirkete ulaştıktan sonra 10 İŞ GÜNÜ içinde yapılır", renk: "blue" },
+            { anahtar: "Hesap Cetveli", deger: "Hesap dönemini takip eden 10 İŞ GÜNÜ içinde gönderilir", renk: "blue" },
+            { anahtar: "Fon Dağılımı Kotası", deger: "Yılda max 12 kez değiştirilir", renk: "yellow" },
+            { anahtar: "Emeklilik Planı Kotası", deger: "Yılda en fazla 4 KEZ değiştirilir", renk: "yellow" },
+            { anahtar: "Fon Pay Değeri", deger: "Fiyatın ait olduğu günü takip eden iş günü duyurulur", renk: "blue" },
+            { anahtar: "Emekli Maaş Değişikliği", deger: "Yılda en fazla 2 KEZ değiştirilebilir", renk: "yellow" },
+        ]
+    },
+    {
+        baslik: "ŞİRKET KURULUŞ VE PERSONEL",
+        kartlar: [
+            { anahtar: "En Önemli Belge", deger: "İş Planı + Sistem Tasarımı + Yapılabilirlik (Fizibilite) Raporu", renk: "blue" },
+            { anahtar: "Hisse Türü", deger: "NAMA YAZILI (isime yazılı). Hamiline yazılı OLAMAZ!", renk: "red" },
+            { anahtar: "%51 Kuralı", deger: "Sermayenin en az %51'i mali piyasalarda tecrübeli TÜZEL KİŞİLERE ait", renk: "red" },
+            { anahtar: "Yönetim Kurulu", deger: "En az 5 kişi", renk: "blue" },
+            { anahtar: "Fon Kurulu", deger: "En az 3 kişi", renk: "blue" },
+            { anahtar: "Genel Müdür Tecrübe", deger: "En az 10 yıl mesleki tecrübe", renk: "yellow" },
+            { anahtar: "GM Yardımcısı", deger: "En az 7 yıl mesleki tecrübe", renk: "yellow" },
+            { anahtar: "5 Yıl Hapis Kuralı", deger: "Kasten 5+ yıl hapis → 1. derece imza yetkilisi OLAMAZ", renk: "red" },
+            { anahtar: "Lisans İptali", deger: "Suç işleyip lisansı iptal edilen aracı 3 YIL sınava giremez", renk: "red" },
+            { anahtar: "Eğitim Zorunluluğu", deger: "İlk 2 yılda + sonraki her yıl tamamlayıcı eğitim zorunlu", renk: "red" },
+            { anahtar: "Kuruluş İzni Süresi", deger: "İzin alındıktan sonra 1 yıl içinde ruhsat başvurusu yoksa izin geçersiz", renk: "red" },
+        ]
+    },
+    {
+        baslik: "VERGİ SÜREÇLERİ VE STOPAJ",
+        kartlar: [
+            { anahtar: "Vergi Sırası", deger: "Tarh → Tebliğ → Tahakkuk → Tahsil", renk: "blue" },
+            { anahtar: "Tarh", deger: "Vergiyi HESAPLAMA", renk: "blue" },
+            { anahtar: "Tebliğ", deger: "Yazı ile BİLDİRME", renk: "blue" },
+            { anahtar: "Tahakkuk", deger: "Ödenecek aşamaya GELME", renk: "blue" },
+            { anahtar: "Tahsil", deger: "Verginin ÖDENMESİ/ALINMASI", renk: "blue" },
+            { anahtar: "Muafiyet vs İstisna", deger: "Muafiyet: KİŞİYE. İstisna: KONUYA/İŞLEME uygulanır", renk: "red" },
+            { anahtar: "Stopaj Yetkisi", deger: "Oranları %0'a indirme / %15'e çıkarma yetkisi: Cumhurbaşkanı", renk: "yellow" },
+            { anahtar: "Yıllık Beyanname", deger: "Bir takvim yılı içinde tüm kazanç ve iratları toplayıp devlete bildirme", renk: "blue" },
+            { anahtar: "Gelir Vergisi Beyanı", deger: "MART ayında verilir", renk: "blue" },
+            { anahtar: "Kurumlar Vergisi Beyanı", deger: "NİSAN ayında verilir", renk: "blue" },
+            { anahtar: "Vefat → Mirasçıya", deger: "Terekeye dahil → Veraset-İntikal Vergisi", renk: "yellow" },
+            { anahtar: "Vefat → Lehdara", deger: "İvazsız İktisap → Veraset-İntikal Vergisi", renk: "yellow" },
+            { anahtar: "Vefat Tazminatı", deger: "Ferdi kaza vb. sonucu ödenen tazminat HİÇ VERGİLENDİRİLMEZ", renk: "green" },
+            { anahtar: "%51 BİST Kuralı", deger: "Min %51 yerli hisse + 1 yıldan fazla tutma = Stopaj SIFIR", renk: "green" },
+            { anahtar: "Damga Vergisi İstisnası", deger: "BES kuruluş sözleşmeleri ve kağıtları Damga Vergisinden istisna", renk: "green" },
+        ]
+    },
+    {
+        baslik: "İŞSİZLİK VE ÜCRET GARANTİ FONU",
+        kartlar: [
+            { anahtar: "İşsizlik Maaşı Şartı", deger: "Son 3 yılda en az 600 gün prim ödemiş olmak", renk: "red" },
+            { anahtar: "Maaş Formülü", deger: "Son 4 ay brüt ortalamanın %40'ı", renk: "blue" },
+            { anahtar: "Tavan Sınırı", deger: "Aylık Brüt Asgari Ücretin %80'ini GEÇEMEZ", renk: "red" },
+            { anahtar: "Max Süre", deger: "En fazla 300 gün boyunca ödenir", renk: "blue" },
+            { anahtar: "Kim Yararlanır?", deger: "SADECE hizmet akdi ile çalışanlar. Memur/esnaf FAYDALANAMAZ", renk: "red" },
+            { anahtar: "İŞKUR", deger: "Resmi adı: TÜRKİYE İŞ KURUMU", renk: "blue" },
+            { anahtar: "Ücret Garanti Fonu", deger: "Patron iflas → İşçinin SON 3 AYLIK maaşı garanti fonundan ödenir", renk: "yellow" },
+            { anahtar: "Fon Kaynağı", deger: "İşveren işsizlik sigortası payından kesilir", renk: "blue" },
+            { anahtar: "Meslek Hastalığı", deger: "Tekrarlanan sebeple/zamana yayılarak oluşan", renk: "yellow" },
+            { anahtar: "İş Kazası", deger: "Anlık/hemen olan bedensel olay", renk: "yellow" },
+            { anahtar: "Yıpranma Payı", deger: "Fiili Hizmet Süresi Zammı (tehlikeli işlerde)", renk: "blue" },
+        ]
+    },
+    {
+        baslik: "FONLARIN HUKUKİ KORUNMASI",
+        kartlar: [
+            { anahtar: "Tüzel Kişilik", deger: "Fonların tüzel kişiliği YOKTUR", renk: "red" },
+            { anahtar: "Kurumlar Vergisi", deger: "Fonlar Kurumlar Vergisinden MUAFTIR (Şirketler öder)", renk: "green" },
+            { anahtar: "Fon Ömrü", deger: "SÜRESİZ olarak kurulurlar", renk: "blue" },
+            { anahtar: "Haciz Koruması", deger: "Haczedilemez, iflas masasına giremez", renk: "green" },
+            { anahtar: "Teminat Yasağı", deger: "Krediler için teminat olarak GÖSTERİLEMEZ", renk: "red" },
+            { anahtar: "Personel Maaşı", deger: "Fon kasasından personel maaşı ÖDENMEZ", renk: "red" },
+            { anahtar: "Kuruluş Tescili", deger: "İçtüzüğün Ticaret Siciline Tescili ile kurulur", renk: "blue" },
+            { anahtar: "İçtüzük Kuralı", deger: "Her fonun AYRI içtüzüğü olmalı, ortak içtüzük ONAYLANAMAZ", renk: "red" },
+            { anahtar: "Başlangıç Tutarı", deger: "Şirket sermayesinin en az 1/20'si", renk: "blue" },
+            { anahtar: "İç Kontrol Sistemi", deger: "Kuran: Emeklilik Şirketi. Amacı: Mevzuata uygunluk (satış ölçmek DEĞİL)", renk: "yellow" },
+            { anahtar: "PYŞ Birden Fazla", deger: "Şirket birden fazla portföy yöneticisiyle sözleşme yapabilir", renk: "blue" },
+            { anahtar: "Olağanüstü Durum", deger: "Savaş/afet → fiyat hesaplanmayabilir. Şirket iflası olağanüstü DEĞİL", renk: "red" },
+        ]
+    },
+    {
+        baslik: "HAYAT SİGORTASI TERİMLERİ",
+        kartlar: [
+            { anahtar: "Mortalite Tablosu", deger: "Yaşama ve ölüm istatistikleri", renk: "blue" },
+            { anahtar: "Morbidite Tablosu", deger: "Hastalanma, yaralanma, malul olma istatistikleri", renk: "blue" },
+            { anahtar: "Komütasyon Tablosu", deger: "Mortalite/morbidite tablolarının teknik faizle iskonto edilmiş hali", renk: "yellow" },
+            { anahtar: "Risk Primi", deger: "Ölüm/hastalık ihtimali için ayrılan tutar", renk: "blue" },
+            { anahtar: "Birikim Primi", deger: "Risk hariç, sadece yatırım amaçlı alınan tutar", renk: "blue" },
+            { anahtar: "Sermaye İtfa Sigortası", deger: "İçinde ölüm/kaza riski OLMAYAN, sadece birikim amaçlı hayat sigortası", renk: "green" },
+            { anahtar: "Tenzil", deger: "Prim ödeyemeyenin poliçesinin 'ücretsiz sigortaya' dönüşmesi", renk: "yellow" },
+            { anahtar: "Zımni Kabul", deger: "Şirket 30 gün içinde 'Hayır' demezse teklif kabul sayılır", renk: "red" },
+            { anahtar: "Zaman Aşımı", deger: "Sigorta sözleşmelerinden doğan talepler 2 yılda zamanaşımı", renk: "red" },
+            { anahtar: "Poliçe Saatleri", deger: "Öğlen 12:00'de başlar, 12:00'de biter", renk: "yellow" },
+        ]
+    },
+    {
+        baslik: "SİGORTA TÜRLERİ KARŞILAŞTIRMA",
+        kartlar: [
+            { anahtar: "Eksik Sigorta", deger: "Poliçeye düşük değer yazma → Hasarda Nispet Kaidesi (orantılı ödeme)", renk: "red" },
+            { anahtar: "Çifte Sigorta", deger: "Aynı malı gizlice iki şirkete sigortalamak → Şirketler zararı paylaşır", renk: "red" },
+            { anahtar: "Müşterek Sigorta", deger: "Büyük riskin organize olarak birden çok şirketçe sigortalanması (Koasürans)", renk: "blue" },
+            { anahtar: "Sedan", deger: "Reasüransta riski DEVREDEN (satan) şirket", renk: "blue" },
+            { anahtar: "Sesyon", deger: "Reasürörce kabul edilen iş (risk) miktarı", renk: "blue" },
+            { anahtar: "Konservasyon", deger: "Şirketin kendi üzerinde TUTTUĞU risk payı", renk: "blue" },
+            { anahtar: "BES vs Sigorta Farkı", deger: "BES = yatırım sistemi. Risk teminatları (kaza/ölüm) BES'te YER ALMAZ", renk: "red" },
+            { anahtar: "Tahkim Şartı", deger: "Önce şirkete başvuru + olumsuz yanıt (veya 15 gün cevapsız) ZORUNLU", renk: "yellow" },
+            { anahtar: "Tahkim Heyeti", deger: "15.000 TL ve üzeri uyuşmazlıklarda Hakem Heyeti kurulması ZORUNLU", renk: "red" },
+            { anahtar: "Hasar Ödeme Şekli", deger: "Nakit / Onarım / Yenisini koyma. TAKAS yapılamaz!", renk: "red" },
+        ]
     }
 ];

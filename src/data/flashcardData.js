@@ -109,4 +109,82 @@ export const flashcardData = [
     { id: 88, kategori: "Hesaplama", on: "Aktarımda kalan kesinti limiti?", arka: "2.805 TL - Eski şirketin kestiği = Yeni şirketin kesebileceği. Örnek: 2.805 - 2.500 = 305 TL.", onem: "kritik" },
     { id: 89, kategori: "Hesaplama", on: "Net faiz hesabı?", arka: "Brüt Faiz - (Brüt Faiz × Stopaj Oranı). Örn: %6 brüt, %15 stopaj → 6-(6×0.15) = %5.10 net.", onem: "yuksek" },
     { id: 90, kategori: "Hesaplama", on: "Haciz koruma tutarı formülü?", arka: "Kalınan ay sayısı × Brüt asgari ücret = Haczedilemez tutar.", onem: "yuksek" },
+
+    // ============== OKS (OTOMATİK KATILIM) ==============
+    { id: 91, kategori: "BES Mevzuatı", on: "OKS'de kimler kapsam dışıdır?", arka: "Kendi adına bağımsız çalışanlar (esnaf, serbest meslek). OKS sadece maaşlı çalışanlara (işçi/memur) zorunludur.", onem: "kritik" },
+    { id: 92, kategori: "BES Mevzuatı", on: "OKS kesinti oranı nedir?", arka: "Prime esas kazancın (SGK matrahı) %3'ü. Asgari ücretten DEĞİL!", onem: "kritik" },
+    { id: 93, kategori: "BES Mevzuatı", on: "OKS'de ilk para nereye yatırılır?", arka: "Başlangıç Fonu'na zorunlu olarak yönlendirilir.", onem: "yuksek" },
+    { id: 94, kategori: "BES Mevzuatı", on: "OKS'de şirketi kim seçer?", arka: "İşveren (patron) seçer. Ancak çalışanın ara verme ve fon dağılım değiştirme hakkı vardır, patron bunu engelleyemez.", onem: "yuksek" },
+    { id: 95, kategori: "BES Mevzuatı", on: "OKS'de işveren kendi cebinden ödeme yapar mı?", arka: "HAYIR! İşveren sadece maaştan keserek aktaran bir aracıdır. Kendi cebinden ödeme zorunluluğu yoktur.", onem: "kritik" },
+
+    // ============== SÖZLEŞME VE SİSTEM ==============
+    { id: 96, kategori: "BES Mevzuatı", on: "BES, SGK'nın alternatifi midir?", arka: "HAYIR! BES sadece tamamlayıcıdır. SGK zorunlu, BES gönüllü. BES ile sağlık hizmeti alınamaz, SGK'ya prim aktarılamaz.", onem: "kritik" },
+    { id: 97, kategori: "BES Mevzuatı", on: "Kaç sözleşme yapılabilir?", arka: "SINIR YOKTUR! Her katılımcı istediği şirketten sınırsız sözleşme yapabilir.", onem: "yuksek" },
+    { id: 98, kategori: "BES Mevzuatı", on: "Emeklilik Planı nedir ve nereye kaydedilir?", arka: "İşin matematiğini anlatan Teknik Esaslardır. EGM'nin elektronik plan tanımlama sisteminde kayda alınır.", onem: "orta" },
+    { id: 99, kategori: "BES Mevzuatı", on: "4632 sayılı BES kanunu ne yapar?", arka: "Tek amacı: Katkı paylarının fonlarda toplanması ve değerlendirilmesi. Borsa veya sigorta şirketi kuruluşuna KARIŞMAZ.", onem: "orta" },
+    { id: 100, kategori: "BES Mevzuatı", on: "Katkı payı ara verme kuralı?", arka: "İSTEDİĞİN ZAMAN ara verebilirsin. 5 yıl beklemeye veya onay almaya gerek yok. Boş geçen süre 10 yıl süresinden sayılır.", onem: "yuksek" },
+    { id: 101, kategori: "BES Mevzuatı", on: "3 ay üst üste ödemezsen ne olur?", arka: "Şirket ek yönetim gideri kesintisi cezası alır (düzensiz ödeme).", onem: "yuksek" },
+
+    // ============== OPERASYONEL SÜRELER ==============
+    { id: 102, kategori: "BES Mevzuatı", on: "Katkı payı yatırım talimatı süresi?", arka: "Paranın hesaba intikalinden sonra en geç 2. iş günü.", onem: "yuksek" },
+    { id: 103, kategori: "BES Mevzuatı", on: "Ayrılma bilgi formu süresi?", arka: "Talepten sonra en geç 5 iş günü içinde gönderilir.", onem: "yuksek" },
+    { id: 104, kategori: "BES Mevzuatı", on: "Plan değişikliği yıllık kotası?", arka: "Fon dağılımı: Yılda max 12 kez. Emeklilik planı: Yılda max 4 kez.", onem: "kritik" },
+    { id: 105, kategori: "BES Mevzuatı", on: "Hesap bildirim cetveli ne zaman gönderilir?", arka: "Hesap dönemini takip eden 10 iş günü içinde.", onem: "orta" },
+
+    // ============== EMEKLİLİK EVRESİ ==============
+    { id: 106, kategori: "BES Mevzuatı", on: "Emekli olan ama susan müşteriye ne olur?", arka: "Sözleşmesi askıya ALINMAZ, yürürlükte kalır.", onem: "orta" },
+    { id: 107, kategori: "BES Mevzuatı", on: "Emekli maaş tutarı ne sıklıkla değiştirilebilir?", arka: "Yılda en fazla 2 kez.", onem: "yuksek" },
+    { id: 108, kategori: "BES Mevzuatı", on: "Emekliliğe 2 yıl kala şirket ne yapar?", arka: "Müşteriye düşük riskli fonlara geçiş ÖNERMESİ zorunludur.", onem: "yuksek" },
+    { id: 109, kategori: "BES Mevzuatı", on: "Devlet katkısı yıllık tavanı?", arka: "İlgili yılın brüt asgari ücret toplamının %30'u.", onem: "kritik" },
+    { id: 110, kategori: "BES Mevzuatı", on: "Vergi oranlarını kim belirler?", arka: "Stopaj oranlarını %0'a indirme veya %15'e çıkarma yetkisi Cumhurbaşkanı'ndadır.", onem: "yuksek" },
+    { id: 111, kategori: "BES Mevzuatı", on: "Vefat tazminatı vergilendirilir mi?", arka: "HAYIR! Ferdi kaza sonucu ödenen vefat tazminatı hiçbir şekilde vergilendirilmez.", onem: "kritik" },
+    { id: 112, kategori: "BES Mevzuatı", on: "İmza kimin? (İşveren Grup)", arka: "Teklif ve giriş formunu bizzat İŞVEREN (patron) imzalar, işçi DEĞİL!", onem: "yuksek" },
+
+    // ============== ŞİRKET KURULUŞ ==============
+    { id: 113, kategori: "BES Mevzuatı", on: "Şirket kuruluş için en önemli belge?", arka: "İş Planı ve Sistem Tasarımı ile Yapılabilirlik (Fizibilite) Raporu.", onem: "yuksek" },
+    { id: 114, kategori: "BES Mevzuatı", on: "Şirket hisseleri nasıl olmalı?", arka: "Nama Yazılı (isime yazılı). Hamiline yazılı OLAMAZ! Sermayenin %51'i tecrübeli tüzel kişilere ait olmalı.", onem: "kritik" },
+    { id: 115, kategori: "BES Mevzuatı", on: "YK ve FK kaç kişi? GM tecrübe?", arka: "Yönetim Kurulu: min 5 kişi. Fon Kurulu: min 3 kişi. Genel Müdür: 10 yıl, Yardımcısı: 7 yıl tecrübe.", onem: "kritik" },
+    { id: 116, kategori: "BES Mevzuatı", on: "Aracı lisansı iptal olursa?", arka: "3 yıl boyunca sınava giremez. 5 yıl kasten hapis yatan, 1. derece imza yetkilisi olamaz.", onem: "yuksek" },
+    { id: 117, kategori: "BES Mevzuatı", on: "Eğitim zorunluluğu nedir?", arka: "İlk 2 yıl içinde ve sonraki her yıl tamamlayıcı eğitim almak ZORUNLU. Almazsa satış yetkisi iptal.", onem: "yuksek" },
+
+    // ============== FON KURALLARI ==============
+    { id: 118, kategori: "Finans", on: "Fonların tüzel kişiliği ve vergi durumu?", arka: "Fonların tüzel kişiliği YOKTUR, Kurumlar Vergisinden MUAFTIR. Emeklilik ŞİRKETLERİ vergi öder.", onem: "kritik" },
+    { id: 119, kategori: "Finans", on: "Fonların ömrü ve korunması?", arka: "SÜRESİZ kurulur. Haczedilemez, iflas masasına giremez, TEMİNAT gösterilemez. Personel maaşı fondan ödenmez.", onem: "kritik" },
+    { id: 120, kategori: "Finans", on: "Fonun kuruluşu nasıl tamamlanır?", arka: "İçtüzüğün Ticaret Siciline Tescili ile. Her fonun ayrı içtüzüğü olmalı, ortak içtüzük ONAYLANAMAZ.", onem: "yuksek" },
+    { id: 121, kategori: "Finans", on: "Takasbank ne iş yapar?", arka: "Saklama (kasa) + Kontrol. Yediemin DEĞİLDİR! Aynı zamanda fon portföyünün SPK kurallarına uygunluğunu kontrol eder.", onem: "yuksek" },
+    { id: 122, kategori: "Finans", on: "Fon başlangıç tutarı ne kadar?", arka: "Şirket sermayesinin en az 1/20'si. 3 zorunlu fon kurulmalı.", onem: "orta" },
+    { id: 123, kategori: "Finans", on: "DK fonunda sınırlar?", arka: "Mevduat max %6, tek hisse max %1.", onem: "yuksek" },
+    { id: 124, kategori: "Finans", on: "%51 BİST kuralı nedir?", arka: "En az %51 Borsa İstanbul hissesi barındıran fonlar, 1 yıldan fazla tutulursa satışta stopaj SIFIR.", onem: "kritik" },
+    { id: 125, kategori: "Finans", on: "İştirak Kazancı vs Kâr Payı?", arka: "Şirket başka şirketten kâr alırsa: İştirak Kazancı. Gerçek kişi alırsa: Kâr Payı.", onem: "orta" },
+    { id: 126, kategori: "Finans", on: "Uydurma fon türleri?", arka: "'Özel Fon' veya 'A Tipi / B Tipi Fon' diye resmi BES fon türü YOKTUR!", onem: "kritik" },
+    { id: 127, kategori: "Finans", on: "Döviz değerlemesi hangi kurla?", arka: "Yabancı paraların TL değeri daima TCMB Döviz ALIŞ Kuru ile hesaplanır.", onem: "yuksek" },
+    { id: 128, kategori: "Finans", on: "Likidite riski nedir?", arka: "İkincil piyasada satmak istendiğinde yeterli alıcı bulunamaması.", onem: "orta" },
+    { id: 129, kategori: "Finans", on: "Spesifik risk nedir?", arka: "Portföy çeşitlendirmesiyle azaltılabilen şirkete özgü risk. Grevler de bu gruba girer.", onem: "orta" },
+
+    // ============== SGK VE SOSYAL GÜVENLİK ==============
+    { id: 130, kategori: "Sosyal Güvenlik", on: "SGK ne DEĞİLDİR?", arka: "Sosyal hizmet (bakımevi/çocuk esirgeme) DEĞİL! SGK bir çatı sigorta kurumudur.", onem: "yuksek" },
+    { id: 131, kategori: "Sosyal Güvenlik", on: "SGK kime yardım etmez?", arka: "Maaş alan, sağlığı yerinde ÇALIŞANLARA gelir yardımı yapmaz.", onem: "yuksek" },
+    { id: 132, kategori: "Sosyal Güvenlik", on: "SGK primsiz sisteme hizmet eder mi?", arka: "EVET! 'Sadece prim ödeyenlere hizmet verir' YALANDIR. Muhtaç bireylere yardım programları içerir.", onem: "kritik" },
+    { id: 133, kategori: "Sosyal Güvenlik", on: "Aktif-Pasif dengesi nedir?", arka: "Aktif (çalışan) = Gelir, Pasif (emekli) = Gider. Bu oran yükseliyorsa gelişmiş ülke DEĞİLDİR.", onem: "yuksek" },
+    { id: 134, kategori: "Sosyal Güvenlik", on: "İşsizlik maaşı formülü?", arka: "Son 4 ay brüt ortalamanın %40'ı, max brüt asgari ücretin %80'i, max 300 gün ödenir.", onem: "kritik" },
+    { id: 135, kategori: "Sosyal Güvenlik", on: "Ücret Garanti Fonu?", arka: "İşveren iflas ederse işçinin SON 3 AYLIK maaşı bu fondan ödenir. Fonun kaynağı: İşveren işsizlik sigortası payı.", onem: "yuksek" },
+    { id: 136, kategori: "Sosyal Güvenlik", on: "Meslek hastalığı vs iş kazası?", arka: "Tekrarlanan sebeple/zamana yayılarak = Meslek Hastalığı. Anlık/hemen olan = İş Kazası.", onem: "yuksek" },
+    { id: 137, kategori: "Sosyal Güvenlik", on: "Kayıt dışını ne teşvik ETMEZ?", arka: "BES'i (özel emekliliği) tercih etmek yasal bir tercihtir, kaçak çalışmayı teşvik ETMEZ.", onem: "orta" },
+    { id: 138, kategori: "Sosyal Güvenlik", on: "SGK açığı neyi artırır?", arka: "Kamu borcunu ve enflasyonu patlatır. Ancak CARİ AÇIĞI artırmaz!", onem: "orta" },
+
+    // ============== VERGİ ==============
+    { id: 139, kategori: "Finans", on: "Vergi süreçleri sırası?", arka: "Tarh (hesaplama) → Tebliğ (bildirme) → Tahakkuk (ödenecek hale gelme) → Tahsil (ödeme).", onem: "kritik" },
+    { id: 140, kategori: "Finans", on: "Muafiyet vs İstisna?", arka: "Muafiyet: KİŞİYE uygulanır. İstisna: KONUYA/işleme uygulanır.", onem: "kritik" },
+    { id: 141, kategori: "Finans", on: "Vefat tazminatı vergisi?", arka: "Mirasçılara ödenirse: Veraset-İntikal Vergisi. Lehdara ödenirse: İvazsız İktisap → yine Veraset-İntikal.", onem: "yuksek" },
+    { id: 142, kategori: "Finans", on: "Beyanname tarihleri?", arka: "Gelir Vergisi: MART ayında. Kurumlar Vergisi: NİSAN ayında verilir.", onem: "orta" },
+
+    // ============== SİGORTACILIK EK ==============
+    { id: 143, kategori: "Sigortacılık", on: "Zımni kabul kuralı?", arka: "Hayat sigortası teklifine şirket 30 gün içinde 'Hayır' demezse teklif otomatik KABUL edilmiş sayılır.", onem: "yuksek" },
+    { id: 144, kategori: "Sigortacılık", on: "Sigorta zamanaşımı süresi?", arka: "Sigorta sözleşmesinden doğan talepler 2 yılda zamanaşımına uğrar.", onem: "yuksek" },
+    { id: 145, kategori: "Sigortacılık", on: "Poliçe saatleri?", arka: "Aksi kararlaştırılmadıkça Türkiye saati ile öğlen 12:00'de başlar, 12:00'de biter.", onem: "orta" },
+    { id: 146, kategori: "Sigortacılık", on: "Çifte sigorta vs Müşterek sigorta?", arka: "Çifte: Aynı malı gizlice 2 şirkete sigortalamak (şirketler zararı paylaşır). Müşterek (Koasürans): Büyük riskin organize şekilde birden çok şirketçe sigortalanması.", onem: "kritik" },
+    { id: 147, kategori: "Sigortacılık", on: "Konservasyon nedir?", arka: "Reasüransta şirketin kendi üzerinde tuttuğu risk payı.", onem: "orta" },
+    { id: 148, kategori: "Sigortacılık", on: "Sermaye İtfa Sigortası?", arka: "İçinde ölüm/kaza riski TAŞIMAYAN, sadece birikim amaçlı hayat sigortası.", onem: "orta" },
+    { id: 149, kategori: "Sigortacılık", on: "Komütasyon Tablosu?", arka: "Mortalite/Morbidite tablolarının teknik faizle iskonto edilmiş (hesaplanmış) hali.", onem: "orta" },
+    { id: 150, kategori: "Sigortacılık", on: "Risk Primi vs Birikim Primi?", arka: "Risk Primi: Ölüm/hastalık ihtimali için ayrılan tutar. Birikim Primi: Risk hariç, sadece yatırım amaçlı alınan tutar.", onem: "orta" },
 ];

@@ -60,4 +60,53 @@ export const dogruYanlisData = [
     // SOSYAL GÜVENLİK
     { id: 44, ifade: "BES (3. basamak) dağıtım modeline göre çalışır.", dogru: false, aciklama: "BES FONLAMA modeline göre çalışır! Dağıtım modeli SGK'dır (1. basamak).", kategori: "Sosyal Güvenlik" },
     { id: 45, ifade: "SEDDK, emeklilik şirketlerinin kurallarını belirleyen baş denetim organıdır.", dogru: true, aciklama: "SEDDK = Baş Hakem. SPK fon izni verir. EGM sınav yapar.", kategori: "Sosyal Güvenlik" },
+
+    // OKS TUZAKLARI
+    { id: 46, ifade: "Kendi adına çalışan esnaflar OKS'ye zorunlu olarak dahil edilir.", dogru: false, aciklama: "Bağımsız çalışanlar kapsam DIŞIDIR! OKS sadece maaşlı çalışanlara (işçi/memur) zorunludur.", kategori: "BES Mevzuatı" },
+    { id: 47, ifade: "OKS'de kesinti oranı çalışanın asgari ücretinin %3'üdür.", dogru: false, aciklama: "Asgari ücretten DEĞİL! Prime esas kazancın (SGK matrahı) %3'üdür.", kategori: "BES Mevzuatı" },
+    { id: 48, ifade: "OKS'de işveren, çalışanın ödediği kadar kendi cebinden katkı payı ödemekle yükümlüdür.", dogru: false, aciklama: "İşverenin kendi cebinden ödeme zorunluluğu YOKTUR! Sadece maaştan keserek aktarır.", kategori: "BES Mevzuatı" },
+    { id: 49, ifade: "OKS'de fon dağılım değişikliği hakkı işverene aittir.", dogru: false, aciklama: "Bu hak ÇALIŞANA aittir, işverene devredilemez!", kategori: "BES Mevzuatı" },
+
+    // FON VE YATIRIM TUZAKLARI
+    { id: 50, ifade: "Emeklilik yatırım fonlarının tüzel kişiliği vardır.", dogru: false, aciklama: "TK'si YOKTUR! Bu yüzden Kurumlar Vergisinden de muaftır.", kategori: "Finans" },
+    { id: 51, ifade: "Fon malvarlığından personel maaşları ödenebilir.", dogru: false, aciklama: "Fondan sadece zorunlu yasal masraflar ödenir, personel maaşı ÖDENMEZ!", kategori: "Finans" },
+    { id: 52, ifade: "BES'te 'Özel Fon' adında resmi bir fon türü vardır.", dogru: false, aciklama: "'Özel Fon' veya 'A Tipi / B Tipi Fon' adında resmi BES fon türü YOKTUR!", kategori: "Finans" },
+    { id: 53, ifade: "Bir fon ancak aynı emeklilik şirketinin başka bir fonuyla birleşebilir.", dogru: true, aciklama: "Farklı şirketlerin fonları birbiriyle birleşemez.", kategori: "Finans" },
+    { id: 54, ifade: "Şirket bütün fonları için ortak bir içtüzük onaylatabilir.", dogru: false, aciklama: "Her fonun ayrı içtüzüğü olmalıdır, ortak içtüzük ONAYLANAMAZ.", kategori: "Finans" },
+    { id: 55, ifade: "Devlet katkısı fonunda tek bir hissenin payı %1'i aşamaz.", dogru: true, aciklama: "DK fonunda mevduat max %6, tek hisse max %1.", kategori: "Finans" },
+    { id: 56, ifade: "Takasbank fonlar için sadece saklama görevi yapar.", dogru: false, aciklama: "Sadece saklamakla kalmaz, aynı zamanda fon portföyünün SPK kurallarına uygunluğunu da KONTROL EDER.", kategori: "Finans" },
+
+    // VERGİ TUZAKLARI
+    { id: 57, ifade: "Vergi süreçlerinde doğru sıra: Tarh, Tahakkuk, Tebliğ, Tahsil'dir.", dogru: false, aciklama: "Doğru sıra: Tarh → TEBLİĞ → Tahakkuk → Tahsil! Tebliğ ikinci sıradadır.", kategori: "Finans" },
+    { id: 58, ifade: "Muafiyet kişiye, istisna ise konuya/işleme uygulanır.", dogru: true, aciklama: "Vergi muafiyeti KİŞİ bazlı, vergi istisnası KONU bazlıdır.", kategori: "Finans" },
+    { id: 59, ifade: "Emeklilik yatırım fonlarının kazançları Kurumlar Vergisine tabidir.", dogru: false, aciklama: "MUAFTIR! Fonların tüzel kişiliği yoktur, Kurumlar Vergisinden istisnadır.", kategori: "Finans" },
+    { id: 60, ifade: "Vefat tazminatı mirasçılara ödendiğinde Veraset ve İntikal Vergisi alınır.", dogru: true, aciklama: "Mirasçılara ödenirse terekeye dahil edilir. Lehdara ödenirse 'İvazsız İktisap' olarak yine aynı vergiye tabi.", kategori: "Finans" },
+
+    // SGK VE SOSYAL GÜVENLİK
+    { id: 61, ifade: "SGK bir sosyal hizmet kurumudur (Çocuk Esirgeme gibi).", dogru: false, aciklama: "SGK bir ÇATI SİGORTA kurumudur, sosyal hizmet (bakım) kurumu DEĞİLDİR!", kategori: "Sosyal Güvenlik" },
+    { id: 62, ifade: "Sosyal güvenlik sistemi sadece prim ödeyenlere hizmet verir.", dogru: false, aciklama: "YALANDIR! Sistem muhtaç bireylere yardım programları da İÇERİR.", kategori: "Sosyal Güvenlik" },
+    { id: 63, ifade: "Dağıtım modelinde bireysel fon hesapları ve portföy yöneticisi bulunur.", dogru: false, aciklama: "Dağıtım modelinde fon hesabı YOKTUR! Primler toplanıp anında emeklilere dağıtılır.", kategori: "Sosyal Güvenlik" },
+    { id: 64, ifade: "BES, nüfus yaşlanmasından etkilenmez.", dogru: true, aciklama: "BES fonlama modelidir, demografik değişimlerden DİRENÇLİDİR. Nüfus yaşlanması sadece SGK'yı (dağıtım) etkiler.", kategori: "Sosyal Güvenlik" },
+    { id: 65, ifade: "Emeklilik yaşının yükseltilmesi sistemin bir sorunudur.", dogru: false, aciklama: "Sorun DEĞİL, çözümdür (rehabilitasyon)! Erken emeklilik afları sorun, yaş yükseltme çözümdür.", kategori: "Sosyal Güvenlik" },
+    { id: 66, ifade: "Kayıt dışı istihdam devletin giderini artırır.", dogru: false, aciklama: "Gideri ARTIRMAZ, GELİRİ AZALTIR! Kasaya girmesi gereken parayı engeller.", kategori: "Sosyal Güvenlik" },
+    { id: 67, ifade: "İşsizlik maaşından memurlar ve esnaflar da faydalanabilir.", dogru: false, aciklama: "SADECE hizmet akdi ile çalışanlar (işçiler) yararlanabilir. Memur ve esnaf FAYDALANAMAZ.", kategori: "Sosyal Güvenlik" },
+
+    // SİGORTACILIK EK
+    { id: 68, ifade: "Hayat sigortası teklifine şirket 60 gün içinde yanıt vermezse kabul edilmiş sayılır.", dogru: false, aciklama: "30 gündür! 60 DEĞİL. 30 gün içinde 'Hayır' demezse zımni kabul olur.", kategori: "Sigortacılık" },
+    { id: 69, ifade: "Sigorta sözleşmesinden doğan talepler 5 yılda zamanaşımına uğrar.", dogru: false, aciklama: "2 yıldır! 5 yıl DEĞİL.", kategori: "Sigortacılık" },
+    { id: 70, ifade: "Sigorta poliçesi aksi kararlaştırılmadıkça gece 00:00'da başlar.", dogru: false, aciklama: "Öğlen 12:00'de başlar, yine 12:00'de biter!", kategori: "Sigortacılık" },
+    { id: 71, ifade: "Eksik sigortada hasar olursa şirket tam ödeme yapar.", dogru: false, aciklama: "Nispet Kaidesi uygulanır: orantılı (eksik) ödeme yapılır.", kategori: "Sigortacılık" },
+    { id: 72, ifade: "BES sözleşmesinde kaza ve ölüm risk teminatları yer alır.", dogru: false, aciklama: "BES bir YATIRIM sistemidir, risk teminatları YER ALMAZ! Bunlar hayat/kaza sigortasının işidir.", kategori: "Sigortacılık" },
+    { id: 73, ifade: "Tahkim komisyonuna başvurmadan önce sigorta şirketine başvurmak gerekir.", dogru: true, aciklama: "Olumsuz yanıt almış veya 15 gün cevap alamamış olmak şarttır.", kategori: "Sigortacılık" },
+
+    // SATIŞ VE PAZARLAMA EK
+    { id: 74, ifade: "Müşteri ihtiyacı kapalı uçlu sorularla belirlenir.", dogru: false, aciklama: "AÇIK UÇLU (dolaylı) sorularla belirlenir. 'Evet/Hayır' soruları yetersizdir.", kategori: "Satış/Pazarlama" },
+    { id: 75, ifade: "Satış sürecinde en önemli eylem sürekli konuşmaktır.", dogru: false, aciklama: "En önemli eylem İYİ DİNLEMEKTİR! Sürekli konuşmak veya rakip karalama kesinlikle yanlıştır.", kategori: "Satış/Pazarlama" },
+    { id: 76, ifade: "Pazar araştırmasının amaçları arasında yeni yöneticiler yetiştirmek vardır.", dogru: false, aciklama: "YOKTUR! Pazar araştırması satış, müşteri ve rekabeti anlamaya yöneliktir.", kategori: "Satış/Pazarlama" },
+    { id: 77, ifade: "Maslow hiyerarşisinde nefret fizyolojik bir güdüdür.", dogru: false, aciklama: "Nefret fizyolojik DEĞİLDİR! Fizyolojik güdüler: açlık, susuzluk, uyku, cinsellik.", kategori: "Satış/Pazarlama" },
+
+    // İŞLETME EK
+    { id: 78, ifade: "Dayanıklılık bir rasyonellik oranıdır.", dogru: false, aciklama: "YOKTUR! Rasyonellik oranları: Verimlilik, Kârlılık, İktisadilik, Etkinlik.", kategori: "İktisat" },
+    { id: 79, ifade: "Çekirdek enflasyonda gıda ve enerji fiyatları hesaplamaya dahil edilir.", dogru: false, aciklama: "Gıda ve enerji DIŞARIDA tutularak hesaplanır.", kategori: "İktisat" },
+    { id: 80, ifade: "İkamesi olmayan bir malın talep esnekliği sıfırdır.", dogru: true, aciklama: "Alternatifi yoksa esneklik 0'dır (ölümcül hastalık ilacı gibi).", kategori: "İktisat" },
 ];

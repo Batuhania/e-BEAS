@@ -38,9 +38,9 @@ export default function App() {
 
   const navItems = [
     { id: 'lessons', label: 'Konu Anlatımı', icon: <FiBook />, desc: 'Detaylı ders' },
-    { id: 'flashcard', label: 'Bilgi Kartları', icon: <FiLayers />, desc: 'Aktif hatırlama' },
-    { id: 'truefalse', label: 'Doğru / Yanlış', icon: <FiCheckSquare />, desc: 'Kavram testi' },
-    { id: 'cheat', label: 'Kritik Bilgiler', icon: <FiZap />, desc: 'Hızlı tekrar' },
+    { id: 'flashcard', label: 'Bilgi Kartları', icon: <FiLayers />, desc: '150 kavram kartı' },
+    { id: 'truefalse', label: 'Doğru / Yanlış', icon: <FiCheckSquare />, desc: '80 ifade' },
+    { id: 'cheat', label: 'Kritik Bilgiler', icon: <FiZap />, desc: '54 bolum' },
     { id: 'quiz', label: 'Soru Havuzu Çöz', icon: <FiEdit3 />, desc: '1197 soru' },
     { id: 'exam', label: 'Sınav Simülasyonu', icon: <FiAward />, desc: '100 soru / 120dk' },
     { id: 'review', label: 'Yanlışlarım', icon: <FiAlertCircle />, badge: stats.savedMistakes > 0 ? stats.savedMistakes : null },

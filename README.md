@@ -9,9 +9,9 @@ Bireysel Emeklilik Aracılık Sınavı (BES) için kapsamlı hazırlık platform
 | Modül | Açıklama |
 |-------|----------|
 | **Konu Anlatımı** | 12 yapılandırılmış ders. Karşılaştırma tabloları ve hesaplama örnekleri ile |
-| **Bilgi Kartları** | 90 kavram kartı. Aktif hatırlama tekniği ile öğrenme. Öğrenme ilerlemesi takibi |
-| **Doğru / Yanlış** | 45 ifade. Kavram tuzaklarını tespit etme ve yaygın yanlış anlamaları düzeltme |
-| **Kritik Bilgiler** | 46 bölüm, 450+ hızlı referans kartı. Sınavda en çok sorulan rakamlar ve kurallar |
+| **Bilgi Kartları** | 150 kavram kartı. Aktif hatırlama tekniği ile öğrenme. Öğrenme ilerlemesi takibi |
+| **Doğru / Yanlış** | 80 ifade. Kavram tuzaklarını tespit etme ve yaygın yanlış anlamaları düzeltme |
+| **Kritik Bilgiler** | 54 bölüm, 550+ hızlı referans kartı. Sınavda en çok sorulan rakamlar ve kurallar |
 | **Soru Havuzu** | 1197 gerçek sınav sorusu. Sıralı, karışık, zamanlı veya zayıf konudan çözme modları |
 | **Sınav Simülasyonu** | Gerçek sınav formatında 100 soru / 120 dakika. Soru işaretleme ve navigator |
 

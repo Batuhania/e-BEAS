@@ -29,11 +29,15 @@ export default function App() {
   });
 
   useEffect(() => {
-    const savedStats = localStorage.getItem('ebeas_stats');
-    if (savedStats) setStats(JSON.parse(savedStats));
-
-    const mistakes = JSON.parse(localStorage.getItem('ebeas_mistakes') || '[]');
-    setStats(prev => ({ ...prev, savedMistakes: mistakes.length }));
+    const refreshStats = () => {
+      const savedStats = localStorage.getItem('ebeas_stats');
+      if (savedStats) setStats(prev => ({ ...prev, ...JSON.parse(savedStats) }));
+      const mistakes = JSON.parse(localStorage.getItem('ebeas_mistakes') || '[]');
+      setStats(prev => ({ ...prev, savedMistakes: mistakes.length }));
+    };
+    refreshStats();
+    window.addEventListener('ebeas-stats-updated', refreshStats);
+    return () => window.removeEventListener('ebeas-stats-updated', refreshStats);
   }, [currentView]);
 
   const navItems = [

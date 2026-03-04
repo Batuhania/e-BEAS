@@ -37,6 +37,7 @@ export default function QuizView() {
   });
   const [answeredQs, setAnsweredQs] = useState(() => loadAnsweredQs());
   const answeredQsRef = useRef(answeredQs);
+  const pendingCorrectRef = useRef(null); // defer hide until next question
 
   // Timer logic
   useEffect(() => {
@@ -99,7 +100,12 @@ export default function QuizView() {
     return categoryFiltered.filter(q => !answeredQs.has(q.id));
   }, [categoryFiltered, hideSolved, answeredQs]);
 
-  // Re-order when category, mode, or filter changes
+  // Re-order ONLY when category or mode changes (not when answeredQs/hideSolved changes)
+  const [resetKey, setResetKey] = useState(0);
+  useEffect(() => {
+    setResetKey(k => k + 1);
+  }, [selectedCategory, orderMode]);
+
   useEffect(() => {
     if (orderMode === 'random') {
       orderedRef.current = [...filteredQuestions].sort(() => Math.random() - 0.5);
@@ -113,7 +119,7 @@ export default function QuizView() {
 
     const stats = JSON.parse(localStorage.getItem('ebeas_stats') || '{"solved":0,"correct":0}');
     setSolvedCount(stats.solved);
-  }, [filteredQuestions, orderMode]);
+  }, [resetKey]);
 
   const handleAnswerSelect = (optionValue) => {
     if (isAnswered) return;
@@ -131,13 +137,13 @@ export default function QuizView() {
     const qId = currentQuestion.id;
     const alreadyAnswered = answeredQsRef.current.has(qId);
 
-    // Track this question as answered (for hide-solved and dedup)
+    // Track this question as answered in ref and localStorage only (don't update state yet)
     if (correct) {
       const updated = new Set(answeredQsRef.current);
       updated.add(qId);
       answeredQsRef.current = updated;
-      setAnsweredQs(updated);
       saveAnsweredQs(updated);
+      pendingCorrectRef.current = updated; // will apply on next question
     }
 
     // Stats: only count if this question hasn't been answered before
@@ -170,6 +176,8 @@ export default function QuizView() {
 
     localStorage.setItem('ebeas_stats', JSON.stringify(stats));
     setSolvedCount(stats.solved);
+    // Notify App.jsx sidebar to update stats in real-time
+    window.dispatchEvent(new Event('ebeas-stats-updated'));
 
     if (!correct) {
       const mistakes = JSON.parse(localStorage.getItem('ebeas_mistakes') || '[]');
@@ -181,20 +189,47 @@ export default function QuizView() {
   };
 
   const handleNextQuestion = () => {
+    // Apply pending answered question to state (triggers filter recalc)
+    if (pendingCorrectRef.current) {
+      setAnsweredQs(pendingCorrectRef.current);
+      pendingCorrectRef.current = null;
+    }
+
     setIsAnswered(false);
     setSelectedAnswer(null);
     setIsCorrect(false);
 
-    const nextIdx = questionIndex + 1;
-    if (nextIdx < orderedRef.current.length) {
-      setQuestionIndex(nextIdx);
-      setCurrentQuestion(orderedRef.current[nextIdx]);
+    // Rebuild the ordered list from current filteredQuestions + pending removes
+    const currentFiltered = hideSolved
+      ? categoryFiltered.filter(q => !answeredQsRef.current.has(q.id))
+      : categoryFiltered;
+
+    if (orderMode === 'random') {
+      orderedRef.current = [...currentFiltered].sort(() => Math.random() - 0.5);
     } else {
-      if (orderMode === 'random') {
-        orderedRef.current = [...filteredQuestions].sort(() => Math.random() - 0.5);
-      }
+      orderedRef.current = [...currentFiltered];
+    }
+
+    // Find a valid next index
+    if (orderedRef.current.length === 0) {
+      setCurrentQuestion(null);
+      setQuestionIndex(0);
+      return;
+    }
+
+    // In sequential mode with hide-solved, just go to index 0 of remaining
+    if (hideSolved) {
       setQuestionIndex(0);
       setCurrentQuestion(orderedRef.current[0]);
+    } else {
+      const nextIdx = questionIndex + 1;
+      if (nextIdx < orderedRef.current.length) {
+        setQuestionIndex(nextIdx);
+        setCurrentQuestion(orderedRef.current[nextIdx]);
+      } else {
+        setQuestionIndex(0);
+        setCurrentQuestion(orderedRef.current[0]);
+      }
     }
   };
 

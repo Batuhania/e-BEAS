@@ -32,6 +32,7 @@ export default function QuizView() {
   const [timerEnabled, setTimerEnabled] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
   const timerRef = useRef(null);
+  const feedbackRef = useRef(null);
   const [hideSolved, setHideSolved] = useState(() => {
     return localStorage.getItem('ebeas_hide_solved') === 'true';
   });
@@ -178,6 +179,11 @@ export default function QuizView() {
     setSolvedCount(stats.solved);
     // Notify App.jsx sidebar to update stats in real-time
     window.dispatchEvent(new Event('ebeas-stats-updated'));
+
+    // Auto-scroll to the next button after a brief delay
+    setTimeout(() => {
+      feedbackRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
 
     if (!correct) {
       const mistakes = JSON.parse(localStorage.getItem('ebeas_mistakes') || '[]');
@@ -485,7 +491,7 @@ export default function QuizView() {
                 })()}
               </div>
 
-              <button className="btn btn-primary next-btn" onClick={handleNextQuestion}>
+              <button className="btn btn-primary next-btn" onClick={handleNextQuestion} ref={feedbackRef}>
                 Sıradaki Soru <FiArrowRight />
               </button>
             </motion.div>
@@ -786,7 +792,18 @@ export default function QuizView() {
           color: var(--warning);
         }
 
-        .next-btn { align-self: flex-end; }
+        .next-btn {
+          align-self: stretch;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 1rem 2rem;
+          font-size: 1.1rem;
+          font-weight: 700;
+          border-radius: 12px;
+          margin-top: 0.5rem;
+        }
 
         /* Inline Lesson Display */
         .lesson-inline {

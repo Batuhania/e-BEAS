@@ -1,15 +1,26 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiCheckCircle, FiXCircle, FiArrowRight, FiInfo, FiDatabase, FiFilter, FiBookOpen, FiShuffle, FiList, FiClock, FiZap, FiTarget } from 'react-icons/fi';
+import { FiCheckCircle, FiXCircle, FiArrowRight, FiInfo, FiDatabase, FiFilter, FiBookOpen, FiShuffle, FiList, FiClock, FiZap, FiTarget, FiEyeOff, FiEye } from 'react-icons/fi';
 import questionsData from '../data/questions.json';
 import { detailedLessons } from '../data/detailedLessons';
 
 // Get unique categories
 const allCategories = [...new Set(questionsData.map(q => q.ust_kategori))].filter(Boolean);
 
+// Load answered questions set from localStorage
+function loadAnsweredQs() {
+  try {
+    const saved = localStorage.getItem('ebeas_answered_qs');
+    return saved ? new Set(JSON.parse(saved)) : new Set();
+  } catch { return new Set(); }
+}
+function saveAnsweredQs(set) {
+  localStorage.setItem('ebeas_answered_qs', JSON.stringify([...set]));
+}
+
 export default function QuizView() {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [orderMode, setOrderMode] = useState('sequential'); // 'sequential' or 'random'
+  const [orderMode, setOrderMode] = useState('sequential');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -21,6 +32,11 @@ export default function QuizView() {
   const [timerEnabled, setTimerEnabled] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
   const timerRef = useRef(null);
+  const [hideSolved, setHideSolved] = useState(() => {
+    return localStorage.getItem('ebeas_hide_solved') === 'true';
+  });
+  const [answeredQs, setAnsweredQs] = useState(() => loadAnsweredQs());
+  const answeredQsRef = useRef(answeredQs);
 
   // Timer logic
   useEffect(() => {
@@ -48,37 +64,47 @@ export default function QuizView() {
   // Auto-skip when time runs out
   useEffect(() => {
     if (timerEnabled && timeLeft === 0 && !isAnswered) {
-      // Mark as wrong (timeout)
       setIsAnswered(true);
       setIsCorrect(false);
       setSelectedAnswer('__timeout__');
       setStreak(0);
-      // Save stats
+      // Save stats (dedup: only count if not already answered)
+      const qId = currentQuestion?.id;
+      const alreadyAnswered = answeredQsRef.current.has(qId);
       const stats = JSON.parse(localStorage.getItem('ebeas_stats') || '{"solved":0,"correct":0}');
-      stats.solved++;
-      localStorage.setItem('ebeas_stats', JSON.stringify(stats));
+      if (!alreadyAnswered) {
+        stats.solved++;
+        localStorage.setItem('ebeas_stats', JSON.stringify(stats));
+      }
       setSolvedCount(stats.solved);
       // Save as mistake
       if (currentQuestion) {
         const m = JSON.parse(localStorage.getItem('ebeas_mistakes') || '[]');
-        m.push({ ...currentQuestion, userAnswer: 'Süre doldu', timestamp: Date.now() });
-        localStorage.setItem('ebeas_mistakes', JSON.stringify(m));
+        if (!m.some(x => x.id === qId)) {
+          m.push({ ...currentQuestion, userAnswer: 'Süre doldu', timestamp: Date.now() });
+          localStorage.setItem('ebeas_mistakes', JSON.stringify(m));
+        }
       }
     }
   }, [timeLeft, timerEnabled, isAnswered]);
 
-  // Filter questions by category
-  const filteredQuestions = useMemo(() => {
+  // Filter questions by category, then optionally hide correctly answered ones
+  const categoryFiltered = useMemo(() => {
     if (selectedCategory === 'all') return questionsData;
     return questionsData.filter(q => q.ust_kategori === selectedCategory);
   }, [selectedCategory]);
 
-  // Re-order when category or mode changes
+  const filteredQuestions = useMemo(() => {
+    if (!hideSolved) return categoryFiltered;
+    return categoryFiltered.filter(q => !answeredQs.has(q.id));
+  }, [categoryFiltered, hideSolved, answeredQs]);
+
+  // Re-order when category, mode, or filter changes
   useEffect(() => {
     if (orderMode === 'random') {
       orderedRef.current = [...filteredQuestions].sort(() => Math.random() - 0.5);
     } else {
-      orderedRef.current = [...filteredQuestions]; // Excel sırasıyla
+      orderedRef.current = [...filteredQuestions];
     }
     setQuestionIndex(0);
     setCurrentQuestion(orderedRef.current[0] || null);
@@ -102,23 +128,37 @@ export default function QuizView() {
     if (correct) setStreak(prev => prev + 1);
     else setStreak(0);
 
-    // Enhanced stats with per-category tracking
-    const stats = JSON.parse(localStorage.getItem('ebeas_stats') || '{"solved":0,"correct":0}');
-    stats.solved += 1;
-    if (correct) stats.correct += 1;
+    const qId = currentQuestion.id;
+    const alreadyAnswered = answeredQsRef.current.has(qId);
 
-    // Per-category stats
-    if (!stats.categories) stats.categories = {};
-    const cat = currentQuestion.ust_kategori || 'Diğer';
-    if (!stats.categories[cat]) stats.categories[cat] = { solved: 0, correct: 0 };
-    stats.categories[cat].solved += 1;
-    if (correct) stats.categories[cat].correct += 1;
+    // Track this question as answered (for hide-solved and dedup)
+    if (correct) {
+      const updated = new Set(answeredQsRef.current);
+      updated.add(qId);
+      answeredQsRef.current = updated;
+      setAnsweredQs(updated);
+      saveAnsweredQs(updated);
+    }
+
+    // Stats: only count if this question hasn't been answered before
+    const stats = JSON.parse(localStorage.getItem('ebeas_stats') || '{"solved":0,"correct":0}');
+    if (!alreadyAnswered) {
+      stats.solved += 1;
+      if (correct) stats.correct += 1;
+
+      // Per-category stats
+      if (!stats.categories) stats.categories = {};
+      const cat = currentQuestion.ust_kategori || 'Diğer';
+      if (!stats.categories[cat]) stats.categories[cat] = { solved: 0, correct: 0 };
+      stats.categories[cat].solved += 1;
+      if (correct) stats.categories[cat].correct += 1;
+    }
 
     // Best streak tracking
     if (!stats.bestStreak) stats.bestStreak = 0;
     if (newStreak > stats.bestStreak) stats.bestStreak = newStreak;
 
-    // Daily study log (track activity per day)
+    // Daily study log
     const today = new Date().toISOString().split('T')[0];
     if (!stats.dailyLog) stats.dailyLog = {};
     if (!stats.dailyLog[today]) stats.dailyLog[today] = { solved: 0, correct: 0 };
@@ -133,7 +173,7 @@ export default function QuizView() {
 
     if (!correct) {
       const mistakes = JSON.parse(localStorage.getItem('ebeas_mistakes') || '[]');
-      if (!mistakes.some(m => m.soru === currentQuestion.soru)) {
+      if (!mistakes.some(m => m.id === qId)) {
         mistakes.push({ ...currentQuestion, timestamp: Date.now() });
         localStorage.setItem('ebeas_mistakes', JSON.stringify(mistakes));
       }
@@ -219,8 +259,28 @@ export default function QuizView() {
           >
             <FiTarget /> Zayıf Konudan
           </button>
+          <button
+            className={`order-btn ${hideSolved ? 'active' : ''}`}
+            onClick={() => {
+              const next = !hideSolved;
+              setHideSolved(next);
+              localStorage.setItem('ebeas_hide_solved', String(next));
+            }}
+            title={hideSolved ? 'Tüm soruları göster' : 'Doğru bildiğin soruları gizle'}
+          >
+            {hideSolved ? <FiEyeOff /> : <FiEye />} {hideSolved ? 'Gizli' : 'Çözüleni Gizle'}
+          </button>
         </div>
       </div>
+
+      {/* Solved info banner */}
+      {hideSolved && (
+        <div className="solved-info-banner">
+          {answeredQs.size > 0
+            ? `${answeredQs.size} doğru cevaplanan soru gizlendi. ${filteredQuestions.length} soru kaldı.`
+            : 'Henüz doğru cevaplanan soru yok.'}
+        </div>
+      )}
 
       {/* Timer bar */}
       {timerEnabled && currentQuestion && (
@@ -241,7 +301,7 @@ export default function QuizView() {
             className={`filter-btn ${selectedCategory === 'all' ? 'active' : ''}`}
             onClick={() => setSelectedCategory('all')}
           >
-            Tümü ({questionsData.length})
+            Tümü ({hideSolved ? filteredQuestions.length : questionsData.length})
           </button>
           {allCategories.map(cat => {
             const count = questionsData.filter(q => q.ust_kategori === cat).length;

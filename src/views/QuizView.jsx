@@ -29,6 +29,7 @@ export default function QuizView() {
   const [solvedCount, setSolvedCount] = useState(0);
   const [streak, setStreak] = useState(0);
   const orderedRef = useRef(null);
+  const [sessionIndex, setSessionIndex] = useState(0);
   const [timerEnabled, setTimerEnabled] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
   const timerRef = useRef(null);
@@ -225,6 +226,7 @@ export default function QuizView() {
 
     // In sequential mode with hide-solved, just go to index 0 of remaining
     if (hideSolved) {
+      setSessionIndex(prev => prev + 1);
       setQuestionIndex(0);
       setCurrentQuestion(orderedRef.current[0]);
     } else {
@@ -364,10 +366,10 @@ export default function QuizView() {
       <div className="quiz-progress-bar">
         <div className="progress-info">
           <span className="source-badge"><FiDatabase /> Resmi Soru Havuzu (Sorular-3139)</span>
-          <span className="q-counter">Soru #{questionIndex + 1} / {filteredQuestions.length}</span>
+          <span className="q-counter">Soru #{hideSolved ? (sessionIndex + 1) : (questionIndex + 1)} / {filteredQuestions.length}</span>
         </div>
         <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${((questionIndex + 1) / filteredQuestions.length) * 100}%` }}></div>
+          <div className="progress-fill" style={{ width: `${(((hideSolved ? sessionIndex : questionIndex) + 1) / filteredQuestions.length) * 100}%` }}></div>
         </div>
         <div className="session-stats-row">
           <span>Toplam çözülen: <strong>{solvedCount}</strong></span>
@@ -491,13 +493,21 @@ export default function QuizView() {
                 })()}
               </div>
 
-              <button className="btn btn-primary next-btn" onClick={handleNextQuestion} ref={feedbackRef}>
-                Sıradaki Soru <FiArrowRight />
-              </button>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      {/* Sticky next button bar - always visible after answering */}
+      {
+        isAnswered && (
+          <div className="sticky-next-bar" ref={feedbackRef}>
+            <button className="btn btn-primary next-btn-sticky" onClick={handleNextQuestion}>
+              Sıradaki Soru <FiArrowRight />
+            </button>
+          </div>
+        )
+      }
 
       <style>{`
         .quiz-view {
@@ -794,15 +804,37 @@ export default function QuizView() {
 
         .next-btn {
           align-self: stretch;
+          display: none;
+        }
+
+        .sticky-next-bar {
+          position: sticky;
+          bottom: 0;
+          z-index: 50;
+          padding: 1rem;
+          background: linear-gradient(to top, rgba(15, 23, 42, 0.98) 60%, rgba(15, 23, 42, 0) 100%);
+        }
+
+        .next-btn-sticky {
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
+          width: 100%;
           padding: 1rem 2rem;
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           font-weight: 700;
           border-radius: 12px;
-          margin-top: 0.5rem;
+          background: var(--accent-primary);
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .next-btn-sticky:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
         }
 
         /* Inline Lesson Display */
@@ -948,6 +980,6 @@ export default function QuizView() {
           .next-btn { width: 100%; }
         }
       `}</style>
-    </div>
+    </div >
   );
 }

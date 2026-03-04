@@ -29,7 +29,6 @@ export default function QuizView() {
   const [solvedCount, setSolvedCount] = useState(0);
   const [streak, setStreak] = useState(0);
   const orderedRef = useRef(null);
-  const [sessionIndex, setSessionIndex] = useState(0);
   const [timerEnabled, setTimerEnabled] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
   const timerRef = useRef(null);
@@ -196,7 +195,7 @@ export default function QuizView() {
   };
 
   const handleNextQuestion = () => {
-    // Apply pending answered question to state (triggers filter recalc)
+    // Apply pending correctly-answered question to state
     if (pendingCorrectRef.current) {
       setAnsweredQs(pendingCorrectRef.current);
       pendingCorrectRef.current = null;
@@ -206,38 +205,30 @@ export default function QuizView() {
     setSelectedAnswer(null);
     setIsCorrect(false);
 
-    // Rebuild the ordered list from current filteredQuestions + pending removes
-    const currentFiltered = hideSolved
-      ? categoryFiltered.filter(q => !answeredQsRef.current.has(q.id))
-      : categoryFiltered;
-
-    if (orderMode === 'random') {
-      orderedRef.current = [...currentFiltered].sort(() => Math.random() - 0.5);
+    // Simply advance to the next question in the current ordered list
+    const nextIdx = questionIndex + 1;
+    if (nextIdx < orderedRef.current.length) {
+      setQuestionIndex(nextIdx);
+      setCurrentQuestion(orderedRef.current[nextIdx]);
     } else {
-      orderedRef.current = [...currentFiltered];
-    }
+      // Reached the end — rebuild the list for a fresh pass
+      const currentFiltered = hideSolved
+        ? categoryFiltered.filter(q => !answeredQsRef.current.has(q.id))
+        : categoryFiltered;
 
-    // Find a valid next index
-    if (orderedRef.current.length === 0) {
-      setCurrentQuestion(null);
-      setQuestionIndex(0);
-      return;
-    }
+      if (currentFiltered.length === 0) {
+        setCurrentQuestion(null);
+        setQuestionIndex(0);
+        return;
+      }
 
-    // In sequential mode with hide-solved, just go to index 0 of remaining
-    if (hideSolved) {
-      setSessionIndex(prev => prev + 1);
+      if (orderMode === 'random') {
+        orderedRef.current = [...currentFiltered].sort(() => Math.random() - 0.5);
+      } else {
+        orderedRef.current = [...currentFiltered];
+      }
       setQuestionIndex(0);
       setCurrentQuestion(orderedRef.current[0]);
-    } else {
-      const nextIdx = questionIndex + 1;
-      if (nextIdx < orderedRef.current.length) {
-        setQuestionIndex(nextIdx);
-        setCurrentQuestion(orderedRef.current[nextIdx]);
-      } else {
-        setQuestionIndex(0);
-        setCurrentQuestion(orderedRef.current[0]);
-      }
     }
   };
 
@@ -366,10 +357,10 @@ export default function QuizView() {
       <div className="quiz-progress-bar">
         <div className="progress-info">
           <span className="source-badge"><FiDatabase /> Resmi Soru Havuzu (Sorular-3139)</span>
-          <span className="q-counter">Soru #{hideSolved ? (sessionIndex + 1) : (questionIndex + 1)} / {filteredQuestions.length}</span>
+          <span className="q-counter">Soru #{questionIndex + 1} / {orderedRef.current?.length || filteredQuestions.length}</span>
         </div>
         <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${(((hideSolved ? sessionIndex : questionIndex) + 1) / filteredQuestions.length) * 100}%` }}></div>
+          <div className="progress-fill" style={{ width: `${((questionIndex + 1) / (orderedRef.current?.length || filteredQuestions.length)) * 100}%` }}></div>
         </div>
         <div className="session-stats-row">
           <span>Toplam çözülen: <strong>{solvedCount}</strong></span>

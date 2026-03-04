@@ -485,7 +485,10 @@ export default function ReviewView() {
         .review-memory-hack strong { color: #f59e0b; white-space: nowrap; }
 
         @media (max-width: 640px) {
-          .quiz-container { padding: 1.5rem; }
+          .quiz-container { padding: 1rem; }
+          .option-btn { padding: 1rem; }
+          .option-letter { width: 28px; height: 28px; font-size: 0.9rem; margin-right: 0.75rem; }
+          .option-text { font-size: 0.95rem; padding-right: 1rem; }
           .feedback-panel { flex-direction: column; align-items: flex-start; }
           .feedback-actions { width: 100%; flex-direction: column; }
           .feedback-actions button { width: 100%; }

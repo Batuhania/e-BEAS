@@ -266,6 +266,7 @@ const dyStyles = `
     .dy-all-done { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
     .dy-all-done p { color: var(--text-secondary); }
     @media (max-width: 640px) {
+        .dy-card { padding: 1.25rem; }
         .dy-statement { font-size: 1rem; }
         .dy-btn { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
     }

@@ -966,11 +966,16 @@ export default function QuizView() {
         }
 
         @media (max-width: 640px) {
-          .quiz-container { padding: 1.5rem; }
+          .quiz-container { padding: 1rem; }
           .question-text { font-size: 1.125rem; }
+          .option-btn { padding: 1rem; }
+          .option-letter { width: 28px; height: 28px; font-size: 0.9rem; margin-right: 0.75rem; }
+          .option-text { font-size: 0.95rem; padding-right: 1rem; }
           .next-btn { width: 100%; }
+          .sticky-next-bar { padding: 0.5rem; }
+          .next-btn-sticky { padding: 0.75rem 1rem; font-size: 1.05rem; }
         }
       `}</style>
-    </div >
+    </div>
   );
 }

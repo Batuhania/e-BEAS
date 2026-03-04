@@ -260,10 +260,10 @@ const flashcardStyles = `
     .fc-stat.blue span { color: #60a5fa; }
     .fc-complete-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
     @media (max-width: 640px) {
-        .fc-card { padding: 1.5rem; min-height: 220px; }
+        .fc-card { padding: 1rem; min-height: 200px; }
         .fc-question { font-size: 1.1rem; }
         .fc-actions { gap: 0.5rem; }
-        .fc-action-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+        .fc-action-btn { padding: 0.8rem; font-size: 1.2rem; min-width: 48px; min-height: 48px; justify-content: center; }
         .fc-action-btn span { display: none; }
         .fc-shortcuts { display: none; }
     }

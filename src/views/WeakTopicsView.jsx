@@ -458,12 +458,16 @@ const paStyles = `
     .pa-reset-btn:hover { background: rgba(239,68,68,0.15); }
 
     @media (max-width: 640px) {
-        .pa-readiness { flex-direction: column; text-align: center; }
+        .pa-readiness { flex-direction: column; text-align: center; padding: 1.25rem 1rem; }
         .pa-readiness-ring { width: 100px; height: 100px; }
         .pa-readiness-score { font-size: 1.8rem; }
         .pa-stats-grid { grid-template-columns: repeat(2, 1fr); }
         .pa-alltime-grid { grid-template-columns: repeat(2, 1fr); }
         .pa-cat-stats { grid-template-columns: repeat(2, 1fr); }
         .pa-tab { font-size: 0.75rem; padding: 0.5rem 0.25rem; }
+        .pa-progress-section { padding: 1rem; }
+        .pa-chart { padding: 1rem; }
+        .pa-alltime { padding: 1rem; }
+        .pa-streak { padding: 1rem; flex-direction: column; text-align: center; }
     }
 `;

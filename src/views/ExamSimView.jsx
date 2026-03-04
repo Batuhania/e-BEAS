@@ -470,6 +470,9 @@ const examStyles = `
     .exam-back-btn { flex: 1; padding: 0.85rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--text-primary); font-weight: 600; font-size: 0.9rem; cursor: pointer; }
 
     @media (max-width: 640px) {
+        .exam-intro { padding: 1.5rem; }
+        .exam-question { padding: 1rem; }
+        .exam-result-header { padding: 1.5rem; }
         .exam-info-grid { grid-template-columns: repeat(2, 1fr); }
         .exam-grid-dots { grid-template-columns: repeat(10, 1fr); }
         .exam-result-stats { gap: 1.25rem; }

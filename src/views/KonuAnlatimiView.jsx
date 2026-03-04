@@ -167,7 +167,11 @@ const konuStyles = `
     .konu-tag.green { background: rgba(16,185,129,0.1); color: #34d399; }
 
     @media (max-width: 640px) {
+        .konu-lesson-header { padding: 1rem; }
         .konu-lesson-header h1 { font-size: 1.15rem; }
+        .konu-section { padding: 1rem; }
+        .konu-compare { padding: 1rem; }
+        .konu-calc { padding: 1rem; }
         .konu-compare th, .konu-compare td { padding: 0.5rem 0.6rem; font-size: 0.78rem; }
     }
 `;
